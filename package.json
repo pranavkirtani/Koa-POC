@@ -1,0 +1,16 @@
+{
+  "name": "BlogAPI",
+  "description": "The Blog API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --harmony server.js"
+  },
+  "author": "Pranav kirtani",
+  "dependencies": {
+    "co-body": "^2.0.0",
+    "co-monk": "^1.0.0",
+    "koa": "^0.20.0",
+    "koa-route": "^2.4.1",
+    "monk": "^1.0.1"
+  }
+}
