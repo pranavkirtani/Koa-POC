@@ -8,6 +8,6 @@ React.render(
 
 
  React.render(
-        <CreateBackButton/>,
+        <CreateBackButton class="btn btn-danger commentsBackButton"/>,
         document.getElementById('goBack')
     );

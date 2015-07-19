@@ -1,0 +1,98 @@
+.writeBlog{
+    width:26%;
+    margin-left:37%;
+    margin-top: 2%;
+    font-size:26px;
+
+}
+
+.commentList {
+    /*border: 1px solid black;*/
+    width: 30%;
+}
+.blogLinks{
+
+    border:0.5px solid black;
+
+}
+a{
+font-size:30px;
+}
+
+
+a:hover{
+
+    color:green
+
+}
+h3{
+
+font-style: italic
+}
+.blogTitle{
+    width:60%;
+    margin-left: 7%;
+     margin-top: 2%;
+}
+.blogContent{
+    width:60%;
+    margin-left: 7%;
+    height: 184%;
+    margin-top: 3%;
+    
+}
+
+.submitBlog{
+height: 6%;
+    margin-left: 3%;
+    margin-top: 2%;
+    width: 30%;
+    font-size:18px
+}
+.backButton {
+    margin-left: 10%;
+    margin-top: 2%;
+     width: 30%;
+        font-size:18px
+
+}
+.titleBlog{
+ font-size: 37px;
+    font-style: italic;
+    margin-left: 40%;
+}
+.contentBlog{
+    
+    font-size: 17px;
+    margin-left: 2%;
+    margin-top: 7%;
+}
+.addComment{
+  margin-top: 2%;
+    width: 20%;
+    font-size:18px
+
+}
+#name{
+ margin-top: 1%;
+ margin-left: 2%;    
+}
+#body{
+ margin-top: 1%;
+ margin-left: 2%;    
+}
+
+.commentsBackButton {
+    margin-top: 2%;
+     width: 23%;
+        font-size:18px
+
+}
+.comment {
+    border: 0.1px solid black;
+    height: 14%;
+    width: 24%;
+}
+.comment .name{
+font-style:oblique
+}

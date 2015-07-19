@@ -3,7 +3,7 @@
   render: function() {
 
     return (
-    <div>
+    <div className="blogLinks">
       <a href={"/view/"+this.props.id}>
        {this.props.title}
        
@@ -36,9 +36,13 @@ var BlogList = React.createClass({
   },
   render: function() {
   
-
-   
-    
+var html_to_add;
+   if(this.state.data.length>0){
+        html_to_add=<h3>Blogs available to read</h3>
+   }
+      else{
+      html_to_add='';
+      }
  var commentNodes = this.state.data.map(function (comment) {
       return (
         <Blog title={comment.title} text={comment.content} id={comment._id}>
@@ -48,6 +52,7 @@ var BlogList = React.createClass({
     
     return (
       <div className="commentList">
+        {html_to_add}
         {commentNodes}
       </div>
     );
@@ -100,7 +105,7 @@ var CreateButton=React.createClass({
 
 render: function() {
     return (
-   <button id={this.props.id}>{this.props.text}</button>
+   <button id={this.props.id} className={this.props.class} width>{this.props.text}</button>
      
     );
   }
@@ -126,7 +131,7 @@ render:function(){
       html_to_return=<textarea width="500px" height="200px" disabled></textarea>
     }
       else{
-      html_to_return=<textarea width="500px" height="200px" ></textarea>
+      html_to_return=<textarea width="500px" height="200px" className="blogContent" maxlength="6000" placeholder="Write your Blog here :)"></textarea>
       }
 
     return(
@@ -154,10 +159,10 @@ render:function(){
     
     
      if(this.props.disabled){
-      html_to_return=<input type="text" width="500px" height="20px"  disabled/>
+      html_to_return=<input type="text" width="500px" height="20px" className="blogTitle" disabled/>
     }
       else{
-      html_to_return=<input type="text" width="500px" height="20px"/>
+      html_to_return=<input type="text" width="500px" height="20px" className="blogTitle" placeholder="Enter the title for your blog"/>
       }
 
     return(
@@ -248,12 +253,11 @@ var BlogContent=React.createClass({
         return(
 
             <div>
-                <div>
-                    <input type="text" width="500px" height="20px" value={this.props.data.title} disabled/> 
+                <div className="titleBlog">
+                    {this.props.data.title}
                 </div>
-                <div>
-                    <textarea width="500px" height="200px" value={this.props.data.content} disabled>
-                    </textarea>
+                <div className="contentBlog">
+                   {this.props.data.content}
                 </div>
             <CommentData data={this.props.data.comments|| []}/>
             <AddComment/>
@@ -275,15 +279,15 @@ var BlogContent=React.createClass({
           
            var commentNodes = this.props.data.map(function (comment) {
       return (
-            <div>
-              <span class="name">{comment.name}</span>--
-              <span class="content">{comment.body}</span>
+            <div className="comment">
+              <span className="name"><b>{comment.name}</b></span> says <span className="content">{comment.body}</span>
             </div>
       );
     });    
     
     return (
-      <div className="commentList">
+      <div>
+        <h4>Comment section </h4>
         {commentNodes}
       </div>
     );
@@ -309,13 +313,14 @@ var BlogContent=React.createClass({
       render:function(){
          return(
          <div>
+             <h4>Please Do add a Comment</h4>
              <div>
-                <input type="text" id="name"/>
+                <input type="text" id="name" placeholder="Your Name is?"/>
              </div>
              <div>
-                <textarea id="body"></textarea>
+                <textarea id="body" placeholder="Your Comments :)"></textarea>
              </div>
-                 <CreateButton text="Add Comment" id="comment"/>
+                 <CreateButton text="Add Comment" id="comment" class="addComment btn btn-primary"/>
         </div>
          
         );
@@ -342,7 +347,7 @@ var CreateBackButton=React.createClass({
     
     render:function(){
             return(
-            <button id='goback'>Go Back</button>
+            <button id='goback' className={this.props.class}>Back to Blog Page</button>
             )
 
     }    

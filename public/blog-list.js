@@ -1,5 +1,5 @@
  React.render(
-        <CreateButton text="write a blog" id="createButton"/>,
+        <CreateButton text="Write a Blog" id="createButton" class="btn btn-success writeBlog"/>,
         document.getElementById('button')
     );
 

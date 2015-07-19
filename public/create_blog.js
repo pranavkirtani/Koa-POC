@@ -1,5 +1,5 @@
  React.render(
-        <CreateButton text="Submit blog" id="submitBlog"/>,
+        <CreateButton text="Post your blog" id="submitBlog" class="btn btn-info submitBlog"/>,
         document.getElementById('button')
     );
 
@@ -17,6 +17,6 @@ React.render(
 );
 
  React.render(
-        <CreateBackButton/>,
+        <CreateBackButton class="btn btn-danger backButton"/>,
         document.getElementById('goBack')
     );
