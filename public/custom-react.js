@@ -91,10 +91,7 @@ var CreateButton=React.createClass({
 
 });
           
-          $('#goBack').click(function(){
-                
-                 window.location='/'
-                });
+         
           
     
   },
@@ -192,6 +189,36 @@ var BlogViewableArea=React.createClass({
         console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
+      
+      var that=this;
+        $('#comment').click(function(){
+        
+                var url = window.location.href;
+                var id=url.split('/view/')[1];
+                var params={};
+                params.id=id;
+                params.name=$('#name').val();
+                params.body=$('#body').val();
+                $.ajax({
+                url: '/comments',
+                method:'POST',
+                data:params,
+                success: function(data) {
+                    that.setState({data:data});
+                    $('#name').val('');
+                    $('#body').val('');
+                  
+                }.bind(that),
+                error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+                }.bind(this)
+                });
+        
+        
+            })
+      
+      
+      
   },
     
     
@@ -228,6 +255,8 @@ var BlogContent=React.createClass({
                     <textarea width="500px" height="200px" value={this.props.data.content} disabled>
                     </textarea>
                 </div>
+            <CommentData data={this.props.data.comments|| []}/>
+            <AddComment/>
             </div>
         )
     }
@@ -236,8 +265,90 @@ var BlogContent=React.createClass({
         
         
         });
+    
+    
+    
+    var CommentData=React.createClass({
+    
+      render:function(){
+          
+          
+           var commentNodes = this.props.data.map(function (comment) {
+      return (
+            <div>
+              <span class="name">{comment.name}</span>--
+              <span class="content">{comment.body}</span>
+            </div>
+      );
+    });    
+    
+    return (
+      <div className="commentList">
+        {commentNodes}
+      </div>
+    );
+          
+          
+        
+          
+      }
+    });
+    
+    
+    
+    
+    var AddComment=React.createClass({
+        
+        componentDidMount:function(){
+          
+        
+        
+        
+        },
+    
+      render:function(){
+         return(
+         <div>
+             <div>
+                <input type="text" id="name"/>
+             </div>
+             <div>
+                <textarea id="body"></textarea>
+             </div>
+                 <CreateButton text="Add Comment" id="comment"/>
+        </div>
+         
+        );
+    
+         
+    
+       }
+    });
 
 
+    
+var CreateBackButton=React.createClass({
+    
+    
+    componentDidMount:function(){
+      $('#goBack').click(function(){
+                
+                 window.location='/'
+                });
+    
+    
+    
+    },
+    
+    render:function(){
+            return(
+            <button id='goback'>Go Back</button>
+            )
+
+    }    
+    
+    
+    })
 
 
   

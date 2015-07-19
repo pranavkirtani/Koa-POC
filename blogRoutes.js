@@ -80,8 +80,8 @@ console.log('in comment');
  
 	var postedBlog = yield parse(this);
        var blog = yield blogs.findById(postedBlog.id);
-    console.log(postedBlog);
-        if(blog.comments){
+   
+        if(blog.comments!=null){
             console.log(blog.comments);
             var comment_data={};
         comment_data.name=postedBlog.name;
@@ -101,8 +101,9 @@ console.log('in comment');
         
     }
 	yield blogs.updateById(postedBlog.id, blog);
-
+  var blog=yield blogs.findById(postedBlog.id);
 this.status=201
+this.body=blog
 };
 
 module.exports.getComments = function *(id) {

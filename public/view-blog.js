@@ -8,6 +8,6 @@ React.render(
 
 
  React.render(
-        <CreateButton text="Go Back" id="goBack"/>,
+        <CreateBackButton/>,
         document.getElementById('goBack')
     );
