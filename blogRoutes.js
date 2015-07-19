@@ -30,6 +30,17 @@ console.log('in add');
     console.log('end'+insertedBlog._id);
 };
 
+module.exports.getAll = function *() {
+    console.log('inside getAll')
+	var blog = yield blogs.find({});
+    console.log(blog);
+	this.body = blog;
+    console.log("body aah");
+	this.status = 200;
+    console.log('status');
+};
+
+
 module.exports.get = function *(id) {
 	var blog = yield blogs.findById(id);
 	this.body = blog;
